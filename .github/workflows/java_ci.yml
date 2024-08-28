@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  api_gateway_test:
+  ci:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -19,8 +19,6 @@ jobs:
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v3
     - name: Make gradlew executable
-      run: chmod +x ./gradlew
-      working-directory: .
+      run: chmod +x ./gradlew #This is needed because the gradlew file is not executable initally
     - name: Build with Gradle Wrapper
       run: ./gradlew clean build
-      working-directory: .
